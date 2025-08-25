@@ -1,5 +1,17 @@
 <html>
   <title>Blogs</title>
+  {% if logged_in %}
+ <form method="post" action="/logout/">
+  {% csrf_token %}
+  <button type="submit" class="logbutton">
+    Logout
+  </button>
+  <a href="/blog/user/{{ user.id }}/">{{ user.username }}</a>
+  {% else %}
+  <a href="/login" class="logbutton">Login</a>
+  {% endif %}
+
+
   <h1>New blogs</h1>
   {% for blog in blogs %}
     <li>
