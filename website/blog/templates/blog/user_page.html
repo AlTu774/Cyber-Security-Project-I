@@ -1,9 +1,13 @@
 <html>
+  <a href="/blog/">Home</a>
   <h2>{{ user }}</h2>
+  <a href="/blog/create_blog">Create new blog</a>
   <p>Blogs:</p>
   {% for blog in blogs %}
   <ul>
-    <a href="/blog/{{ blog.id }}/">{{ blog.title }}</a>
+    <form action="/blog/{{ blog.id }}/delete/">
+    <a href="/blog/{{ blog.id }}/">{{ blog.title }}</a> <button type="submit">Delete</button>
+    </form>
   </ul>
   {% endfor %}
 </html>
