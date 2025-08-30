@@ -1,6 +1,7 @@
 <html>
   <a href="/blog/">Home</a>
   <h2>{{ user }}</h2>
+  
   <a href="/blog/create_blog">Create new blog</a>
   <p>Blogs:</p>
   {% for blog in blogs %}
@@ -11,3 +12,34 @@
   </ul>
   {% endfor %}
 </html>
+
+
+<!--
+FIX 2, replace above template with below one.
+
+
+<html>
+  <a href="/blog/">Home</a>
+  <h2>{{ user }}</h2>
+  {% if is_user %}
+    <a href="/blog/create_blog">Create new blog</a>
+  <p>Blogs:</p>
+  {% for blog in blogs %}
+  <ul>
+    <form action="/blog/{{ blog.id }}/delete/">
+    <a href="/blog/{{ blog.id }}/">{{ blog.title }}</a> <button type="submit">Delete</button>
+    </form>
+  </ul>
+  {% endfor %}
+  {% endif %}
+  {% if is_user == False %}
+  <p>Blogs:</p>
+  {% for blog in blogs %}
+  <ul>
+    <a href="/blog/{{ blog.id }}/">{{ blog.title }}</a>
+  </ul>
+  {% endfor %}
+  {% endif %}
+</html>
+
+-->

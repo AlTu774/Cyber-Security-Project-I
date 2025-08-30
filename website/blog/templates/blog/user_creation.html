@@ -1,0 +1,34 @@
+<html>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="username"><b>Username</b></label>
+    <input type="text" name="username" required>
+    
+    <br>
+    {% if error %}
+      <p>Passwords don't match</p>
+    {% endif %}
+
+    <label for="password1"><b>Password</b></label>
+    <input type="password" name="password1" required>
+    <br>
+    <label for="password2"><b>Retype Password</b></label>
+    <input type="password" name="password2" required>
+    <br>
+
+    <button type="submit">Register</button>
+  </form>
+</html>
+
+
+<!--
+FIX 1, replace the template above with commented out template
+
+<html>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="Register">Register</button>
+  </form>
+</html>
+-->

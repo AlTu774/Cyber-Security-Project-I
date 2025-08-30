@@ -1,6 +1,7 @@
 <html>
   <h2>New blog</h2>
   <form action="/blog/confirm_blog">
+    {% csrf_token %}
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>
     <br>

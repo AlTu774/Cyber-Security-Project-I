@@ -9,5 +9,6 @@ urlpatterns = [
     path('create_blog/', views.blog_form),
     path('confirm_blog/', views.create_blog),
     path('<int:blog_id>/create_comment/', views.create_comment),
-    path('<int:blog_id>/delete/', views.delete_blog)
+    path('<int:blog_id>/delete/', views.delete_blog),
+    path('create_user/', views.create_new_user)
 ]

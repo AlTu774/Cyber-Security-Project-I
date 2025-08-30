@@ -8,19 +8,21 @@
   <body>
     <a href="/blog/">Home</a>
     <h1>{{blog.title}}</h1>
+    <p>by <a href="/blog/user/{{user.id}}">{{user.username}}</a></p>
     <p>{{blog.pub_date}}</p>
     {{blog.text}}
     {% if logged_in %}
     <p>Add a comment:</p>
     <form action="create_comment/">
-      <textarea name="new_comment">
-      </textarea>
+      <textarea name="new_comment"></textarea>
       <Button type="submit">Send</Button>
     </form>
     {% endif %}
+
     <h3>Comments:</h3>
     {% for comment in comments %}
     <ul class="comment">{{comment}}</ul>
     {% endfor %}
+
   </body>
 </html>

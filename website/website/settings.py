@@ -86,6 +86,10 @@ LOGIN_REDIRECT_URL = '/'
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
+
+"""
+FIX 1 uncomment AUTH_PASSWORD_VALIDATORS setting
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -101,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+"""
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -123,3 +128,22 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# FIX 4, comment out SESSION_COOKIE_SAMESITE and SESSION_COOKIE_SECURE lines below
+
+#SESSION_COOKIE_SAMESITE = 'None'
+#SESSION_COOKIE_SECURE = True
+
+
+PASSWORD_HASHERS = [
+  "django.contrib.auth.hashers.UnsaltedMD5PasswordHasher"
+]
+
+"""
+FIX 5 change PASSWORD_HASHERS to same as below or remove the setting altogether for default setting
+
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+]
+
+"""
