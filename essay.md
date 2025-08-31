@@ -27,7 +27,7 @@ FLAW 2: OWASP Top 1: Broken Access Control,
 CWE-284: Improper Access Control
 https://github.com/AlTu774/Cyber-Security-Project-I/blob/6db1f0b1d0550b494a16d88af3a878ee9e5c1790/website/blog/views.py#L140
 
-Anyone can delete blogs from any of the users’ user page. This isn’t the intended purpose since only the creator of a blog should be able to delete said blog. On every user page there is also a link to a form for creating new blogs and anyone can click these. A blog can only be created by a logged in user and the blog is added to said user’s user page, but the creation form should still be visible only to a logged user on their user page.
+Anyone can delete blogs from any of the users’ user page. This isn’t the intended purpose since only the creator of a blog should be able to delete said blog. On every user page there is also a link to a form for creating new blogs and anyone can click these. A blog can only be created by a logged in user and the blog is added to said user’s user page, but the creation form should still be visible only to a logged in user on their user page.
 
 <img src=https://github.com/AlTu774/Cyber-Security-Project-I/blob/main/screenshots/flaw-2-before-1.png>
 <img src=https://github.com/AlTu774/Cyber-Security-Project-I/blob/main/screenshots/flaw-2-before-2.png>
@@ -54,9 +54,7 @@ The creation of a new comment is implemented in a way that makes it susceptible 
 <img src=https://github.com/AlTu774/Cyber-Security-Project-I/blob/main/screenshots/flaw-3-before-1.png>
 <img src=https://github.com/AlTu774/Cyber-Security-Project-I/blob/main/screenshots/flaw-3-before-2.png>
 
-FIX 3: Instead of directly interacting with sqlite, making changes to the database through Django’s models fixes the problem. When a new comment is added through the Comment model with ‘Comment(user=user, blog=blog, text=text).save()’, Django uses ORM (Object-Relational Mapper) to parameterize the user inputs in the query so that they won’t be executed as SQL code. Another fix could be to change the query in the flawed implementation to 
-
-“  c.execute("INSERT INTO blog_comment (user_id, blog_id, text) VALUES (?, ?, ?);", (user.id, blog.id, text))  ”, which only executes one query and parameterizes the query.
+FIX 3: Instead of directly interacting with sqlite, making changes to the database through Django’s models fixes the problem. When a new comment is added through the Comment model with ‘Comment(user=user, blog=blog, text=text).save()’, Django uses ORM (Object-Relational Mapper) to parameterize the user inputs in the query so that they won’t be executed as SQL code. Another fix could be to change the query in the flawed implementation to “  c.execute("INSERT INTO blog_comment (user_id, blog_id, text) VALUES (?, ?, ?);", (user.id, blog.id, text))  ”, which only executes one query and parameterizes the query.
 
 https://github.com/AlTu774/Cyber-Security-Project-I/blob/6db1f0b1d0550b494a16d88af3a878ee9e5c1790/website/blog/views.py#L111
 
