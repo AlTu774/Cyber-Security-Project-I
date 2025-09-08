@@ -74,6 +74,8 @@ This wasn’t in the 2021 OWASP top 10 list but it was allowed as a flaw for the
 FIX 4: This can be fixed easily by adding “{% csrf_token %}” to any form, which Django’s csrf middleware will use to make sure the request comes from the right place (blog/blog_form’s form) and changing the GET to POST method (now the simple img tag can’t initiate blog creation). Also in the website/settings.py file the lines SESSION_COOKIE_SAMESITE = 'None' and
 SESSION_COOKIE_SECURE = True should be commented out, since the settings will allow session cookies to come from different sites and also assumes all session cookies to be secure.
 
+https://github.com/AlTu774/Cyber-Security-Project-I/blob/5279779c10c37f5beec76d5fc57f5c86d2552442/website/blog/templates/blog/blog_form.html#L4
+https://github.com/AlTu774/Cyber-Security-Project-I/blob/5279779c10c37f5beec76d5fc57f5c86d2552442/website/blog/views.py#L102
 https://github.com/AlTu774/Cyber-Security-Project-I/blob/6db1f0b1d0550b494a16d88af3a878ee9e5c1790/website/website/settings.py#L132
 
 <img src=https://github.com/AlTu774/Cyber-Security-Project-I/blob/main/screenshots/flaw-4-after-1.png>
