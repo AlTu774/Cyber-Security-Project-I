@@ -99,6 +99,10 @@ def blog_form(request):
 #@login_required
 def create_blog(request):
     user = request.user
+    ## FIX 4 change GET to POST
+    # title = request.POST['title']
+    #text = request.POST['text']
+
     title = request.GET['title']
     text = request.GET['text']
     pub_date = timezone.now()
@@ -111,10 +115,10 @@ def create_blog(request):
 """
 FIX 3
 
-#@login_required
+@login_required
 def create_comment(request, blog_id):
     user = request.user
-    text = request.GET['new_comment']
+    text = request.POST['new_comment']
     blog = Blog.objects.get(id=blog_id)
 
     new_comment = Comment(user=user, blog=blog, text=text)

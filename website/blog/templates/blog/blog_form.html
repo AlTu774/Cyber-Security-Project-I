@@ -1,7 +1,11 @@
 <html>
   <h2>New blog</h2>
-  <form action="/blog/confirm_blog">
+  <form action="/blog/confirm_blog/">
+    <!--
+    FIX 4
+    <form action="/blog/confirm_blog/" method="post">
     {% csrf_token %}
+    --> 
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title"><br>
     <br>
